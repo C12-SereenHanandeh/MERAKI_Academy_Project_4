@@ -2,26 +2,22 @@ const express = require('express');
 const {
     createPrescription,
     getPrescriptions,
-    // getPrescriptionById,
     updatePrescription,
     deletePrescription,
 } = require('../controllers/prescpiction');
 const authentication  = require('../middleware/authentication');
-const prescriptionrouter = express.Router();
+const prescriptionRouter = express.Router();
 
 // Create a new prescription
-prescriptionrouter.post('/', authentication, createPrescription);
+prescriptionRouter.post('/', authentication, createPrescription);
 
 // Get all prescriptions
-prescriptionrouter.get('/', authentication, getPrescriptions);
-
-// Get prescription by ID
-// prescriptionrouter.get('/:id', authentication, getPrescriptionById);
+prescriptionRouter.get('/', authentication, getPrescriptions);
 
 // Update a prescription
-prescriptionrouter.put('/:id', authentication, updatePrescription);
+prescriptionRouter.put('/:id', authentication, updatePrescription);
 
 // Delete a prescription
-prescriptionrouter.delete('/:id', authentication, deletePrescription);
+prescriptionRouter.delete('/:id', authentication, deletePrescription);
 
-module.exports = prescriptionrouter;
+module.exports = prescriptionRouter;

@@ -17,6 +17,9 @@ const perscriptionRouter = require("./routes/prescription");
 // import service Router
 const serviceRouter = require("./routes/service");
 
+// import INVOICE Router
+const invoiceRouter = require("./routes/invoice");
+
 app.use(express.json());
 
 // users Router
@@ -30,6 +33,9 @@ app.use("/perscription", perscriptionRouter);
 
 // service Router
 app.use("/service", serviceRouter);
+
+// invoice Router
+app.use("/invoice", invoiceRouter);
 
 const PORT = 5000;
 app.listen(PORT, () => {
