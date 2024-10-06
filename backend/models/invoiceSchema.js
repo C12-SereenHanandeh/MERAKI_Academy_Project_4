@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const invoiceSchema = new mongoose.Schema({
     patientId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     amount: { type: Number, required: true },
-    dateIssued: { type: Date, required: true, default: Date.now },
+    date: { type: Date, required: true, default: Date.now },
+    services:{type:[String],required:true},
     status: { type: String, enum: ['Paid', 'Pending', 'Cancelled'], default: 'Pending' },
 }, { timestamps: true });
 

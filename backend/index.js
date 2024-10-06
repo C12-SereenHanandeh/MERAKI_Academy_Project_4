@@ -14,6 +14,9 @@ const appointmentRouter = require("./routes/appointment");
 // import perscription Router
 const perscriptionRouter = require("./routes/prescription");
 
+// import service Router
+const serviceRouter = require("./routes/service");
+
 app.use(express.json());
 
 // users Router
@@ -24,6 +27,9 @@ app.use("/appointment", appointmentRouter);
 
 // perscription Router
 app.use("/perscription", perscriptionRouter);
+
+// service Router
+app.use("/service", serviceRouter);
 
 const PORT = 5000;
 app.listen(PORT, () => {

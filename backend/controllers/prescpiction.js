@@ -1,4 +1,3 @@
-const { model } = require("mongoose");
 const Prescription = require("../models/prescriptionSchema");
 
 // Create a new prescription
@@ -14,7 +13,7 @@ const createPrescription = async (req, res) => {
       instructions,
     });
     await prescription.save();
-    res.status(201).json(prescription);
+    res.status(201).json({ message: "Prescription created ",prescription});
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -27,7 +26,7 @@ const getPrescriptions = async (req, res) => {
     const prescriptions = await Prescription.find().populate(
       "doctorId patientId"
     );
-    res.json(prescriptions);
+    res.status(201).json({ success: true, message: "Prescriptions Created Successfully" ,prescriptions});
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -43,7 +42,7 @@ const updatePrescription = async (req, res) => {
     const prescription = await Prescription.findByIdAndUpdate(id, updateData, {
       new: true,
     });
-    res.json(prescription);
+    res.status(201).json({success:true,message:"Prescription Updated",prescription});
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -56,7 +55,7 @@ const deletePrescription = async (req, res) => {
 
   try {
     await Prescription.findByIdAndDelete(id);
-    res.json({ message: "Prescription deleted" });
+    res.status(200).json({ message: "Prescription deleted" });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");

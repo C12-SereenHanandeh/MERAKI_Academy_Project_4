@@ -1,7 +1,5 @@
 const Appointment = require("../models/appointmentSchema");
 
-
-
 // Create a new appointment
 const createAppointment = async (req, res) => {
   const { patientId, doctorId, date, time } = req.body;
@@ -9,7 +7,7 @@ const createAppointment = async (req, res) => {
   try {
     const appointment = new Appointment({ patientId, doctorId, date, time });
     await appointment.save();
-    res.status(201).json(appointment);
+    res.status(201).json({ message: "Appointment created ", appointment });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -22,7 +20,11 @@ const getAppointments = async (req, res) => {
     const appointments = await Appointment.find().populate(
       "patientId doctorId"
     );
-    res.json(appointments);
+    res.status(201).json({
+      success: true,
+      message: `All the appointments`,
+      appointments,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -38,7 +40,9 @@ const updateAppointment = async (req, res) => {
     const appointment = await Appointment.findByIdAndUpdate(id, updateData, {
       new: true,
     });
-    res.json(appointment);
+    res
+      .status(202)
+      .json({ success: true, message: `Appointment updated`, appointment });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -51,11 +55,16 @@ const deleteAppointment = async (req, res) => {
 
   try {
     await Appointment.findByIdAndDelete(id);
-    res.json({ message: "Appointment deleted" });
+    res.status(200).json({ message: "Appointment deleted" });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
   }
 };
 
-module.exports = { createAppointment,getAppointments,updateAppointment, deleteAppointment };
+module.exports = {
+  createAppointment,
+  getAppointments,
+  updateAppointment,
+  deleteAppointment,
+};

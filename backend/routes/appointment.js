@@ -2,11 +2,11 @@ const express = require('express');
 const {
     createAppointment,
     getAppointments,
-    getAppointmentById,
+    // getAppointmentById,
     updateAppointment,
     deleteAppointment,
 } = require('../controllers/appointment');
-const { authentication } = require('../middleware/authentication');
+const authentication = require('../middleware/authentication');
 const appointmentRouter = express.Router();
 
 // Create a new appointment
@@ -16,7 +16,7 @@ appointmentRouter.post('/', authentication, createAppointment);
 appointmentRouter.get('/', authentication, getAppointments);
 
 // Get appointment by ID
-appointmentRouter.get('/:id', authentication, getAppointmentById);
+// appointmentRouter.get('/:id', authentication, getAppointmentById);
 
 // Update an appointment
 appointmentRouter.put('/:id', authentication, updateAppointment);
