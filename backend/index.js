@@ -1,15 +1,25 @@
+require("dotenv").config();
 const express = require("express");
-const cors = require("cors");
-
 const app = express();
-const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+
+// import database connection
+require("./models/db");
+
+// import users Router
+const usersRouter = require("./routes/users");
+
+// import appointment Router
+const appointmentRouter = require("./routes/appointment");
 app.use(express.json());
 
-// Handles any other endpoints [unassigned - endpoints]
-app.use("*", (req, res) => res.status(404).json("NO content at this path"));
+// users Router
+app.use("/users", usersRouter);
 
+// appointment Router
+app.use("/appointment", appointmentRouter);
+
+const PORT = 5000;
 app.listen(PORT, () => {
-  console.log(`Server listening at http://localhost:${PORT}`);
+  console.log(`SERVER LISTENING AT http://localhost:${PORT}`);
 });

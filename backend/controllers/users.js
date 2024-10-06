@@ -1,7 +1,6 @@
 const User = require("../models/userSchema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { sanitizeFilter } = require("mongoose");
 
 // Register a new user
 const register = async (req, res) => {
@@ -75,7 +74,7 @@ const login = async (req, res) => {
     const payload = { user: { id: user.id, role: user.role } };
 
     // Sign the JWT token
-    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+    const token = jwt.sign(payload, process.env.SECRET_JWT, {
       expiresIn: "1h",
     });
 
