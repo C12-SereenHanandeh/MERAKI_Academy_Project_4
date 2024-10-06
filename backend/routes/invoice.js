@@ -13,12 +13,12 @@ const invoiceRouter = express.Router();
 invoiceRouter.post("/", authentication, authentication, createInvoice);
 
 // Get all invoice
-invoiceRouter.get("/", authentication, getInvoice);
+invoiceRouter.get("/",  getInvoice);
 
 // Update a invoice
-invoiceRouter.put("/:id", authentication, authorization, updateInvoice);
+invoiceRouter.put("/:id", updateInvoice);
 
 // Delete a invoice
-invoiceRouter.delete("/:id", authentication, authorization, deleteInvoice);
+invoiceRouter.delete("/:id",  deleteInvoice);
 
 module.exports = invoiceRouter;

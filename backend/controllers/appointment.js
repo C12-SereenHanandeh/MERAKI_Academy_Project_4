@@ -31,6 +31,34 @@ const getAppointments = async (req, res) => {
   }
 };
 
+// Get appointments by id
+const getAppointmentById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const appointment = await Appointment.findById(id);
+
+    if (!appointment) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Appointment not found" });
+    }
+    res.status(202).json({
+      success: true,
+      message: `Appointment retrived successfully`,
+      appointment,
+    });
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: `error retrived appointment`,
+        error: err,
+      });
+  }
+};
+
 // Update an appointment
 const updateAppointment = async (req, res) => {
   const { id } = req.params;
@@ -65,6 +93,7 @@ const deleteAppointment = async (req, res) => {
 module.exports = {
   createAppointment,
   getAppointments,
+  getAppointmentById,
   updateAppointment,
   deleteAppointment,
 };

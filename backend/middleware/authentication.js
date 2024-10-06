@@ -1,21 +1,34 @@
 const jwt = require("jsonwebtoken");
 
-// Middleware for checking authentication
-module.exports = function (req, res, next) {
-  // Get token from header
-  const token = req.header("x-auth-token");
-
-  // Check if no token
-  if (!token) {
-    return res.status(401).json({ message: "No token, authorization denied" });
-  }
-
-  // Verify token
+// This function checks if the user logged in
+const authentication = (req, res, next) => {
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded.user;
-    next(); // Pass to the next middleware/controller
+    if (!req.headers.authorization) {
+      return res.status(403).json({
+        success: false,
+        message: `Forbidden`,
+      });
+    }
+    const token = req.headers.authorization.split(" ").pop();
+
+    jwt.verify(token, process.env.SECRET_JWT, (err, result) => {
+      if (err) {
+        res.status(403).json({
+          success: false,
+          message: `The token is invalid or expired`,
+        });
+      } else {
+        req.token = result;
+        next();
+      }
+    });
   } catch (err) {
-    res.status(401).json({ message: "Invalid token" });
+    res.status(500).json({
+      success: false,
+      message: `Server Error`,
+      err: err.message,
+    });
   }
 };
+
+module.exports = authentication;

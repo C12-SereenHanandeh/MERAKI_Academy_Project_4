@@ -12,12 +12,12 @@ const prescriptionRouter = express.Router();
 prescriptionRouter.post('/', authentication, createPrescription);
 
 // Get all prescriptions
-prescriptionRouter.get('/', authentication, getPrescriptions);
+prescriptionRouter.get('/', getPrescriptions);
 
 // Update a prescription
-prescriptionRouter.put('/:id', authentication, updatePrescription);
+prescriptionRouter.put('/:id', updatePrescription);
 
 // Delete a prescription
-prescriptionRouter.delete('/:id', authentication, deletePrescription);
+prescriptionRouter.delete('/:id', deletePrescription);
 
 module.exports = prescriptionRouter;

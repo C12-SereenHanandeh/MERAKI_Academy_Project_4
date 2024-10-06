@@ -13,12 +13,12 @@ const serviceRouter = express.Router();
 serviceRouter.post("/", authentication, createService);
 
 // Get all services
-serviceRouter.get("/", authentication, getAllServices);
+serviceRouter.get("/", getAllServices);
 
 // Update a service
-serviceRouter.put("/:id", authentication, updateService);
+serviceRouter.put("/:id", updateService);
 
 // Delete a service
-serviceRouter.delete("/:id", authentication, deleteService);
+serviceRouter.delete("/:id", deleteService);
 
 module.exports = serviceRouter;
