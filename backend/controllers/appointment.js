@@ -1,7 +1,9 @@
-const Appointment = require("../models/AppointmentSchema");
+const Appointment = require("../models/appointmentSchema");
+
+
 
 // Create a new appointment
-exports.createAppointment = async (req, res) => {
+const createAppointment = async (req, res) => {
   const { patientId, doctorId, date, time } = req.body;
 
   try {
@@ -15,7 +17,7 @@ exports.createAppointment = async (req, res) => {
 };
 
 // Get all appointments
-exports.getAppointments = async (req, res) => {
+const getAppointments = async (req, res) => {
   try {
     const appointments = await Appointment.find().populate(
       "patientId doctorId"
@@ -28,7 +30,7 @@ exports.getAppointments = async (req, res) => {
 };
 
 // Update an appointment
-exports.updateAppointment = async (req, res) => {
+const updateAppointment = async (req, res) => {
   const { id } = req.params;
   const updateData = req.body;
 
@@ -44,7 +46,7 @@ exports.updateAppointment = async (req, res) => {
 };
 
 // Delete an appointment
-exports.deleteAppointment = async (req, res) => {
+const deleteAppointment = async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -55,3 +57,5 @@ exports.deleteAppointment = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+
+module.exports = { createAppointment,getAppointments,updateAppointment, deleteAppointment };

@@ -5,7 +5,7 @@ const {
     getAppointmentById,
     updateAppointment,
     deleteAppointment,
-} = require('../controllers/appointmentController');
+} = require('../controllers/appointment');
 const { authentication } = require('../middleware/authentication');
 const appointmentRouter = express.Router();
 
@@ -24,4 +24,4 @@ appointmentRouter.put('/:id', authentication, updateAppointment);
 // Delete an appointment
 appointmentRouter.delete('/:id', authentication, deleteAppointment);
 
-module.exports = router;
+module.exports = appointmentRouter;
