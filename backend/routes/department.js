@@ -6,11 +6,10 @@ const {
     updateDepartment,
     deleteDepartment,
 } = require('../controllers/department');
-const authentication = require('../middleware/authentication');
 const departmentRouter = express.Router();
 
 // Create a new department
-departmentRouter.post('/', authentication, createDepartment);
+departmentRouter.post('/', createDepartment);
 
 // Get all department
 departmentRouter.get('/', getDepartment);
