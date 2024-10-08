@@ -10,7 +10,7 @@ const authentication = require("../middleware/authentication");
 const serviceRouter = express.Router();
 
 // Create a new service
-serviceRouter.post("/", authentication, createService);
+serviceRouter.post("/", createService);
 
 // Get all services
 serviceRouter.get("/", getAllServices);

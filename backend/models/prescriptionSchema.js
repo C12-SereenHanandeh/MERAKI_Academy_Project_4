@@ -19,7 +19,9 @@ const prescriptionSchema = new mongoose.Schema(
         instructions: { type: String },
       },
     ],
-    dateIssued: { type: Date, required: true, default: Date.now },
+    date: { type: Date, required: true, default: Date.now },
+    dosage:{ type: String, required: true },
+    instructions:{ type: String, required: true },
   },
   { timestamps: true }
 );

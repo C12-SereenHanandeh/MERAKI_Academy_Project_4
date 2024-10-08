@@ -2,18 +2,20 @@ const Prescription = require("../models/prescriptionSchema");
 
 // Create a new prescription
 const createPrescription = async (req, res) => {
-  const { doctorId, patientId, medication, dosage, instructions } = req.body;
+  const { doctorId, patientId, medication, date, dosage, instructions } =
+    req.body;
 
   try {
     const prescription = new Prescription({
       doctorId,
       patientId,
       medication,
+      date,
       dosage,
       instructions,
     });
     await prescription.save();
-    res.status(201).json({ message: "Prescription created ",prescription});
+    res.status(201).json({ message: "Prescription created ", prescription });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -26,7 +28,13 @@ const getPrescriptions = async (req, res) => {
     const prescriptions = await Prescription.find().populate(
       "doctorId patientId"
     );
-    res.status(201).json({ success: true, message: "Prescriptions Created Successfully" ,prescriptions});
+    res
+      .status(201)
+      .json({
+        success: true,
+        message: "Prescriptions Created Successfully",
+        prescriptions,
+      });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -42,7 +50,9 @@ const updatePrescription = async (req, res) => {
     const prescription = await Prescription.findByIdAndUpdate(id, updateData, {
       new: true,
     });
-    res.status(201).json({success:true,message:"Prescription Updated",prescription});
+    res
+      .status(201)
+      .json({ success: true, message: "Prescription Updated", prescription });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");

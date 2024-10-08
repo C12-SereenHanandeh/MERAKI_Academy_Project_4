@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const invoiceSchema = new mongoose.Schema({
+    service:{ type: mongoose.Schema.Types.ObjectId, ref: 'Service' },
     patientId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     amount: { type: Number, required: true },
     date: { type: Date, required: true, default: Date.now },
