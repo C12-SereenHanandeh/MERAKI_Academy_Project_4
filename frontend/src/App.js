@@ -5,7 +5,10 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Contact from "./pages/Contact";
+import About from "./pages/About";
 import PatientDashboard from "./pages/PatientDashboard"
+import DoctorDashboard from "./pages/DoctorDashboard"
+import AdminDashboard from "./pages/AdminDashboard"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
 
@@ -19,8 +22,12 @@ const App = () => {
           <Route exact path="/" element={<Home/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
+          <Route path="/patient-dashboard"  element={<PatientDashboard />} />
+          <Route path="/doctor-dashboard"  element={<DoctorDashboard />} />
+          <Route path="/admin-dashboard"  element={<AdminDashboard />} />
+          <Route exact path="/about" element={<About/>} />
           <Route exact path="/contact" element={<Contact/>} />
-          <Route path="/dashboard"  element={<PatientDashboard />} />
+          
         </Routes>
       </Router>
     </UserProvider>
