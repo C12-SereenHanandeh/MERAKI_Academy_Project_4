@@ -1,58 +1,60 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "../assests/login.css"
 
-const Login = ({ setToken, setIsLoggedIn }) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefult();
-
+  const handleLogin = async (e) => {
+    e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/users/login", {
-        email,
-        password,
-      });
+      const response = await axios.post("/login", { email, password });
+      const { role } = response.data.user;
 
-      const { token } = response.data;
-      setToken(token); // Save token in App component state
-      setIsLoggedIn(true); // Set user logged in state
-      navigate("/Home"); // Redirect to home
-    } catch (error) {
-      if (error.response) {
-        setErrorMessage(
-          error.response.data.message || "Login failed. Please try again."
-        );
-      } else {
-        setErrorMessage(
-          "An unexpected error occurred. Please try again later."
-        );
+      if (role === "Patient") {
+        navigate("/patient-dashboard");
+      } else if (role === "Doctor") {
+        navigate("/doctor-dashboard");
+      } else if (role === "Admin") {
+        navigate("/admin-dashboard");
       }
+    } catch (error) {
+      alert("Login failed. Please try again.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="container">
       <h2>Login</h2>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        reqired
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        reqired
-      />
-      <button type="submit">Sign In</button>
-    </form>
+      <form onSubmit={handleLogin}>
+        <div className="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            className="form-control"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            className="form-control"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Login
+        </button>
+      </form>
+    </div>
   );
 };
 

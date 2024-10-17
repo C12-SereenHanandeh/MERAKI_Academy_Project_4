@@ -1,0 +1,82 @@
+/* General styles for the login container */
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  h2 {
+    color: #2d4e85;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  /* Form styles */
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  label {
+    font-size: 16px;
+    color: #2d4e85;
+    font-weight: bold;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    border-color: #2d4e85;
+    outline: none;
+    box-shadow: 0 0 8px rgba(45, 78, 133, 0.2);
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #2d4e85;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #4a6fa1;
+  }
+  
+  /* Media queries for mobile responsiveness */
+  @media (max-width: 768px) {
+    .container {
+      margin: 30px auto;
+      padding: 20px;
+    }
+  
+    h2 {
+      font-size: 24px;
+    }
+  
+    .btn-primary {
+      font-size: 16px;
+    }
+  }
+  

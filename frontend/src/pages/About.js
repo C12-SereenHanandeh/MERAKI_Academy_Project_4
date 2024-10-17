@@ -1,4 +1,5 @@
 import React from "react";
+import "../assests/about.css";
 
 const About = () => {
   return (
