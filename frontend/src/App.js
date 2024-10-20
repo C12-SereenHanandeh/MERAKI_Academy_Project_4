@@ -9,6 +9,7 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import PatientDashboard from "./pages/PatientDashboard";
 import DoctorDashboard from "./pages/DoctorDashboard";
+import Footer from "./components/Footer"
 import AdminDashboard from "./pages/AdminDashboard";
 import { UserProvider } from "./context/UserContext";
 
@@ -23,10 +24,11 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/patient-dashboard" element={<PatientDashboard />} />
           <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
         </Routes>
+        <Footer/>
       </Router>
     </UserProvider>
   );

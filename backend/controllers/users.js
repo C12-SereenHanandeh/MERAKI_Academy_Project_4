@@ -16,8 +16,8 @@ const register = async (req, res) => {
     experienceYears,
     licenseNumber,
     adminPermissions,
-    image,
-    department, // Adjusted the key name to 'department'
+    // image,
+    // department, // Adjusted the key name to 'department'
   } = req.body;
 
   try {

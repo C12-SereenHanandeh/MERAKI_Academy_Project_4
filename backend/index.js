@@ -67,7 +67,11 @@ app.use("/patient", patientRouter);
 // doctor Router
 app.use("/api/admin", adminRouter);
 
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`SERVER LISTENING AT http://localhost:${PORT}`);
+const cors = require("cors");
+app.use(cors());
+
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
+

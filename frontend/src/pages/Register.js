@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import "../assests/register.css";
 
 const Register = () => {
@@ -13,11 +13,12 @@ const Register = () => {
   const [licenseNumber, setLicenseNumber] = useState("");
   const [medicalHistory, setMedicalHistory] = useState("");
   const [insuranceNumber, setInsuranceNumber] = useState("");
-  const [adminPermissions, setAdminPermissions] = useState([]);
-  const navigate = useNavigate();
+  const [adminPermissions, setAdminPermissions] = useState("");
+  const [department, setDepartment] = useState("");
+  // const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     const userData = {
       username,
@@ -28,17 +29,21 @@ const Register = () => {
         specialization,
         experienceYears,
         licenseNumber,
+        department,
       }),
       ...(role === "Patient" && {
         medicalHistory: [medicalHistory],
         insuranceNumber,
       }),
-      ...(role === "Admin" && { adminPermissions }),
+      ...(role === "Admin" && {
+        adminPermissions: adminPermissions.split(","),
+      }),
     };
 
     try {
-      await axios.post("http://localhost:5000/users/register", userData);
+      await axios.post("/users/register", userData);
       alert("Registration completed successfully!");
+
     } catch (error) {
       console.error("Registration error:", error);
       alert("An error occurred during registration. Please try again.");
@@ -50,7 +55,7 @@ const Register = () => {
       <h2>Register New Account</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>username: </label>
+          <label>Username: </label>
           <input
             type="text"
             className="form-control"
@@ -129,6 +134,17 @@ const Register = () => {
                 required
               />
             </div>
+
+            <div className="form-group">
+              <label>Department:</label>
+              <input
+                type="text"
+                className="form-control"
+                value={department}
+                onChange={(e) => setDepartment(e.target.value)}
+                required
+              />
+            </div>
           </>
         )}
 
@@ -164,7 +180,8 @@ const Register = () => {
               type="text"
               className="form-control"
               value={adminPermissions}
-              onChange={(e) => setAdminPermissions(e.target.value.split(","))}
+              onChange={(e) => setAdminPermissions(e.target.value)}
+              placeholder="Enter permissions separated by commas"
             />
           </div>
         )}
