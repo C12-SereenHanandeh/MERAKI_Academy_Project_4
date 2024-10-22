@@ -1,6 +1,12 @@
 require("dotenv").config();
+
+
 const express = require("express");
 const app = express();
+
+const cors = require("cors");
+app.use(cors());
+
 
 // import database connection
 require("./models/db");
@@ -35,6 +41,8 @@ const adminRouter = require("./routes/admin");
 // import department Router
 const departmentRouter = require("./routes/department");
 
+const reviewRouter = require("./routes/review");
+
 app.use(express.json());
 
 // users Router
@@ -65,13 +73,11 @@ app.use("/doctor", doctorRouter);
 app.use("/patient", patientRouter);
 
 // doctor Router
-app.use("/api/admin", adminRouter);
+app.use("/admin", adminRouter);
 
-const cors = require("cors");
-app.use(cors());
+app.use("/review", reviewRouter);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-

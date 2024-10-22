@@ -1,19 +1,20 @@
 footer {
-    background-color: #2d4e85;
+  background-color: #739be0;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.2);
-  z-index: 100;
+  position: fixed; /* اجعل الـ footer ثابت */
+  top: 0; /* أعلى الصفحة */
+  left: 0; /* الجانب الأيسر */
+  width: 100%; /* عرض 100% */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  z-index: 100; /* تأكد من ظهوره فوق العناصر الأخرى */
 }
 
 footer p {
-    color: white;
+  color: white;
   margin: 0;
   font-size: 14px;
 }
@@ -22,4 +23,11 @@ footer p {
   footer p {
     font-size: 12px;
   }
+}
+
+/* التأكد من توفير مساحة كافية تحت الـ footer */
+body {
+  margin: 0; /* تأكد من عدم وجود هوامش افتراضية */
+  padding-top: 70px; /* توفير مساحة لأسفل الـ footer */
+  padding-bottom: 70px; /* توفير مساحة فوق الـ footer */
 }

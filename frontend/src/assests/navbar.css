@@ -1,54 +1,90 @@
 /* Navbar container */
 .navbar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #2d4e85;
-    padding: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #739be0;
+  padding: 10px 15px; /* تقليل الحواف لخفض الارتفاع */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 60px; /* تحديد ارتفاع ثابت */
+}
+
+
+/* Link styling */
+.navbar a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: #4a6fa1;
+  border-radius: 5px;
+  color: #f0f4f8;
+}
+
+/* Button styling */
+.navbar button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #d9534f;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.navbar button:hover {
+  background-color: #c9302c;
+}
+/* Logo styling */
+.navbar .logo {
+  font-size: 30px; /* حجم الخط للشعار */
+  font-weight: bold; /* خط غامق لتمييز الشعار */
+  color: #ffffff; /* لون النص */
+  font-family: 'Poppins', sans-serif; /* خط حديث وأنيق */
+  letter-spacing: 2px; /* زيادة المسافة بين الأحرف لإضفاء طابع عصري */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* إضافة ظل للشعار */
+  transition: transform 0.3s ease, color 0.3s ease; /* تأثيرات عند التمرير */
+  cursor: pointer;
+}
+
+.navbar .logo:hover {
+  transform: scale(1.1); /* تكبير الشعار عند التمرير */
+  color: #f0f4f8; /* تغيير لون الشعار عند التمرير */
+}
+
+/* Additional media queries for responsive design */
+@media (max-width: 768px) {
+  .navbar .logo {
+    font-size: 24px; /* تصغير حجم الشعار في الشاشات الصغيرة */
   }
-  
-  /* Link styling */
-  .navbar a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* Media query for mobile responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
   }
-  
-  .navbar a:hover {
-    background-color: #4a6fa1;
-    border-radius: 5px;
-    color: #f0f4f8;
-  }
-  
-  /* Button styling */
+
+  .navbar a,
   .navbar button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #ffffff;
-    background-color: #d9534f;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    margin: 5px 0;
   }
-  
-  .navbar button:hover {
-    background-color: #c9302c;
-  }
-  
-  /* Media query for mobile responsiveness */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-    }
-  
-    .navbar a, .navbar button {
-      margin: 5px 0;
-    }
-  }
-  
+}
+
+/* إضافة مسافة أعلى محتوى الصفحة */
+body {
+  margin-top: 70px; /* توفير مسافة كافية أسفل شريط التنقل */
+}

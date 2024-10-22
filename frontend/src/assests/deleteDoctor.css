@@ -1,0 +1,42 @@
+/* src/pages/DeleteDoctor.css */
+.delete-doctor-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.delete-doctor-container h1 {
+  text-align: center;
+}
+
+.delete-doctor-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-doctor-container label {
+  margin-bottom: 5px;
+}
+
+.delete-doctor-container input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.delete-doctor-container button {
+  padding: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-doctor-container button:hover {
+  background-color: #c82333;
+}

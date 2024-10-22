@@ -1,20 +1,14 @@
+
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
 body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin: 0;
   padding: 0;
-}
-
-nav {
-  background-color: gray;
-  color: white;
-  padding: 10px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-}
-
-button {
-  margin: 5px;
+  background-image: url("../src/assests/images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center; /* يركز الخلفية في المنتصف */
+  width: 100%;
 }

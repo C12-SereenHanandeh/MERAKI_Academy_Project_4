@@ -1,6 +1,6 @@
 const express = require('express');
 const {
-    createDepartment,
+    // createDepartment,
     getDepartment,
     getDepatmentById,
     updateDepartment,
@@ -8,8 +8,8 @@ const {
 } = require('../controllers/department');
 const departmentRouter = express.Router();
 
-// Create a new department
-departmentRouter.post('/', createDepartment);
+// // Create a new department
+// departmentRouter.post('/', createDepartment);
 
 // Get all department
 departmentRouter.get('/', getDepartment);

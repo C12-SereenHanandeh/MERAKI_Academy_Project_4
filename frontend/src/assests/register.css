@@ -1,91 +1,68 @@
-/* Container styling for the form */
 .container {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+ 
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
 }
 
 h2 {
   text-align: center;
-  color: #2d4e85;
-  font-size: 30px;
-  margin-bottom: 20px;
-  font-weight: bold;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
-/* Form group styles */
-.form-group {
-  margin-bottom: 20px;
+form {
+  background-color: #ffffff;
+  padding: 2rem;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
 }
 
 label {
   display: block;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 8px;
-  font-size: 16px;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
+input,
 select {
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 0.75rem;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="number"]:focus,
-select:focus {
-  border-color: #2d4e85;
-  outline: none;
-  box-shadow: 0 0 8px rgba(45, 78, 133, 0.2);
-}
-
-/* Button styles */
-.btn-primary {
+button {
   width: 100%;
-  padding: 12px;
-  font-size: 18px;
-  color: #ffffff;
-  background-color: #2d4e85;
+  padding: 0.75rem;
+  background-color: #09228f; 
+  color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.btn-primary:hover {
-  background-color: #4a6fa1;
+button:hover {
+  background-color: #22863a;
 }
 
-/* Spacing for the button */
-.mt-3 {
-  margin-top: 15px;
+.navbar {
+  margin-bottom: 2rem;
 }
 
-/* Media queries for responsiveness */
 @media (max-width: 768px) {
-  .container {
-    padding: 20px;
-    margin: 30px auto;
-  }
-
-  h2 {
-    font-size: 26px;
-  }
-
-  .btn-primary {
-    font-size: 16px;
+  form {
+    max-width: 90%;
   }
 }

@@ -1,32 +1,63 @@
-import React from "react";
+import React from 'react';
 import "../assests/about.css";
+import Navbar from "../components/Navbar";  
+import Footer from "../components/Footer"
 
-const About = () => {
+
+const AboutUs = () => {
   return (
-    <div className="about">
-      <h1>About Us</h1>
-      <p>
-        Welcome to Our Hospital Managment System! We are Dedicated to Providing
-        Quality Healthcare Services and Ensuring the Well-being of Our Patients.
-        Our Team Consists of Experienced Doctors, Nurses and Healthcare
-        Professionals Commited to offering the best Medical Care.
-      </p>
-      <h2>Our Mision</h2>
-      <p>
-        Welcome to Our Hospital Managment System! We are Dedicated to Providing
-        Quality Healthcare Services and Ensuring the Well-being of Our Patients.
-        Our Team Consists of Experienced Doctors, Nurses and Healthcare
-        Professionals Commited to offering the best Medical Care.
-      </p>
-      <h2>Our Vision</h2>
-      <p>
-        Welcome to Our Hospital Managment System! We are Dedicated to Providing
-        Quality Healthcare Services and Ensuring the Well-being of Our Patients.
-        Our Team Consists of Experienced Doctors, Nurses and Healthcare
-        Professionals Commited to offering the best Medical Care.
-      </p>
+    <div className="about-us-page">
+      <Navbar />
+      
+      <section className="hero-section">
+        <div className="hero-content">
+          <h1>About Us</h1>
+          <p>Your Health, Our Priority</p>
+        </div>
+      </section>
+      
+      <section className="about-section mission-section">
+        <div className="container">
+          <h2 className="section-title">Our Mission</h2>
+          <p className="section-description">
+            We are committed to delivering world-class healthcare services that meet the highest standards of quality and patient satisfaction.
+          </p>
+        </div>
+      </section>
+
+      <section className="about-section vision-section">
+        <div className="container">
+          <h2 className="section-title">Our Vision</h2>
+          <p className="section-description">
+            Our vision is to be a global leader in healthcare by continuously innovating and improving patient care, research, and technology.
+          </p>
+        </div>
+      </section>
+
+      
+      <section className="about-section facilities-section">
+        <div className="container">
+          <h2 className="section-title">Our State-of-the-Art Facilities</h2>
+          <p className="section-description">
+            From advanced medical equipment to modern patient care rooms, we ensure the highest standards in healthcare facilities.
+          </p>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="about-section contact-section">
+        <div className="container">
+          <h2 className="section-title">Contact Us</h2>
+          <p className="section-description">
+            For more information or to schedule an appointment, call us at (123) 456-7890 or visit us at [Address].
+          </p>
+          <a href="/contact" className="btn btn-primary">Get in Touch</a>
+        </div>
+      </section>
+
+      <Footer/>
     </div>
   );
 };
 
-export default About;
+export default AboutUs;

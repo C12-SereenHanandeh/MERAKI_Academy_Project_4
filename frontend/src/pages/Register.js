@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
 import "../assests/register.css";
+import Navbar from "../components/Navbar";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -13,9 +13,7 @@ const Register = () => {
   const [licenseNumber, setLicenseNumber] = useState("");
   const [medicalHistory, setMedicalHistory] = useState("");
   const [insuranceNumber, setInsuranceNumber] = useState("");
-  const [adminPermissions, setAdminPermissions] = useState("");
   const [department, setDepartment] = useState("");
-  // const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,25 +23,18 @@ const Register = () => {
       email,
       password,
       role,
-      ...(role === "Doctor" && {
-        specialization,
-        experienceYears,
-        licenseNumber,
-        department,
-      }),
-      ...(role === "Patient" && {
-        medicalHistory: [medicalHistory],
-        insuranceNumber,
-      }),
-      ...(role === "Admin" && {
-        adminPermissions: adminPermissions.split(","),
-      }),
+      medicalHistory,
+      insuranceNumber,
+      specialization,
+      experienceYears,
+      licenseNumber,
+      department,
     };
 
     try {
-      await axios.post("/users/register", userData);
+      const result = await axios.post("http://localhost:5000/users/register", userData);
+      console.log(result);
       alert("Registration completed successfully!");
-
     } catch (error) {
       console.error("Registration error:", error);
       alert("An error occurred during registration. Please try again.");
@@ -51,14 +42,15 @@ const Register = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2>Register New Account</h2>
+    <div className="container">
+      <Navbar />
       <form onSubmit={handleSubmit}>
+        <h2>Create Your Account</h2>
+
         <div className="form-group">
-          <label>Username: </label>
+          <label>Username</label>
           <input
             type="text"
-            className="form-control"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -66,10 +58,9 @@ const Register = () => {
         </div>
 
         <div className="form-group">
-          <label>Email: </label>
+          <label>Email</label>
           <input
             type="email"
-            className="form-control"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -77,10 +68,9 @@ const Register = () => {
         </div>
 
         <div className="form-group">
-          <label>Password: </label>
+          <label>Password</label>
           <input
             type="password"
-            className="form-control"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -88,12 +78,8 @@ const Register = () => {
         </div>
 
         <div className="form-group">
-          <label>Role: </label>
-          <select
-            className="form-control"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-          >
+          <label>Role</label>
+          <select value={role} onChange={(e) => setRole(e.target.value)}>
             <option value="Patient">Patient</option>
             <option value="Doctor">Doctor</option>
             <option value="Admin">Admin</option>
@@ -103,10 +89,9 @@ const Register = () => {
         {role === "Doctor" && (
           <>
             <div className="form-group">
-              <label>Specialization: </label>
+              <label>Specialization</label>
               <input
                 type="text"
-                className="form-control"
                 value={specialization}
                 onChange={(e) => setSpecialization(e.target.value)}
                 required
@@ -114,10 +99,9 @@ const Register = () => {
             </div>
 
             <div className="form-group">
-              <label>Experience Years: </label>
+              <label>Experience Years</label>
               <input
                 type="number"
-                className="form-control"
                 value={experienceYears}
                 onChange={(e) => setExperienceYears(e.target.value)}
                 required
@@ -125,10 +109,9 @@ const Register = () => {
             </div>
 
             <div className="form-group">
-              <label>License Number:</label>
+              <label>License Number</label>
               <input
                 type="text"
-                className="form-control"
                 value={licenseNumber}
                 onChange={(e) => setLicenseNumber(e.target.value)}
                 required
@@ -136,10 +119,9 @@ const Register = () => {
             </div>
 
             <div className="form-group">
-              <label>Department:</label>
+              <label>Department</label>
               <input
                 type="text"
-                className="form-control"
                 value={department}
                 onChange={(e) => setDepartment(e.target.value)}
                 required
@@ -151,20 +133,18 @@ const Register = () => {
         {role === "Patient" && (
           <>
             <div className="form-group">
-              <label>Medical History: </label>
+              <label>Medical History</label>
               <input
                 type="text"
-                className="form-control"
                 value={medicalHistory}
                 onChange={(e) => setMedicalHistory(e.target.value)}
               />
             </div>
 
             <div className="form-group">
-              <label>Insurance Number: </label>
+              <label>Insurance Number</label>
               <input
                 type="text"
-                className="form-control"
                 value={insuranceNumber}
                 onChange={(e) => setInsuranceNumber(e.target.value)}
                 required
@@ -173,22 +153,7 @@ const Register = () => {
           </>
         )}
 
-        {role === "Admin" && (
-          <div className="form-group">
-            <label>Admin Permissions: </label>
-            <input
-              type="text"
-              className="form-control"
-              value={adminPermissions}
-              onChange={(e) => setAdminPermissions(e.target.value)}
-              placeholder="Enter permissions separated by commas"
-            />
-          </div>
-        )}
-
-        <button type="submit" className="btn btn-primary mt-3">
-          Register
-        </button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );

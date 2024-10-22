@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../services/api";
 import { useContext, useUserContext } from "../context/UserContext";
 
 const DoctorDashboard = () => {
@@ -8,7 +8,7 @@ const DoctorDashboard = () => {
 
   useEffect(() => {
     if (user && user.id) {
-      axios.get(`/appointment/doctor/${user.id}`).then((response) => {
+      axios.get(`https://localhost:5000/appointment/doctor/${user.id}`).then((response) => {
         setAppointments(response.data);
       });
     }

@@ -8,6 +8,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
+      <div className="logo">MEDLIFE</div>
       {user ? (
         <>
           <Link to="/dashboard">Dashboard</Link>

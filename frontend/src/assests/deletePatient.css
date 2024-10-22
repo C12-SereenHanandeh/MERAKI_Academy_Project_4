@@ -1,0 +1,42 @@
+/* src/pages/DeletePatient.css */
+.delete-patient-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.delete-patient-container h1 {
+  text-align: center;
+}
+
+.delete-patient-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-patient-container label {
+  margin-bottom: 5px;
+}
+
+.delete-patient-container input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.delete-patient-container button {
+  padding: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-patient-container button:hover {
+  background-color: #c82333;
+}

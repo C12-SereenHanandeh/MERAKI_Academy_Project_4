@@ -1,12 +1,26 @@
 const mongoose = require("mongoose");
 
-const serviceSchema = new mongoose.Schema(
-  {
-    name: { type: String, required: true, unique: true },
-    description: { type: String },
-    price: { type: Number, required: true },
+const ReviewSchema = new mongoose.Schema({
+  reviewerName: {
+    type: String,
+    required: true,
+    trim: true,
   },
-  { timestamps: true }
-);
+  reviewText: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  rating: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 5,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
-module.exports = mongoose.model("Service", serviceSchema);
+module.exports = mongoose.model("Review", ReviewSchema);

@@ -93,7 +93,7 @@ const deleteDepartment = async (req, res) => {
 };
 
 module.exports = {
-  createDepartment,
+  // createDepartment,
   getDepartment,
   getDepatmentById,
   updateDepartment,
